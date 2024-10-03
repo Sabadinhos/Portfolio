@@ -1,0 +1,196 @@
+/* Estilos globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%; /* Garante que o body e html ocupem 100% da altura */
+  margin: 0; /* Remove margens padrão do body */
+  padding: 0; /* Remove preenchimento padrão do body */
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden; /* Garante que não haja vazamentos */
+}
+
+/* Removendo o fundo parallax e aplicando a cor de fundo */
+body {
+  background-color: #faf9f6; /* Cor de fundo uniforme */
+}
+
+.background-parallax {
+  display: none; /* Oculta o fundo parallax */
+}
+
+/* Outros estilos */
+.content {
+  position: relative; /* Para garantir que o conteúdo fique sobre a cor de fundo */
+  z-index: 1; /* Para garantir que o conteúdo esteja acima de qualquer outro elemento */
+}
+
+/* Fundo parallax desfocado */
+.background-parallax {
+  position: fixed;
+  top: 0; /* Corrigido para garantir que a imagem de fundo comece do topo */
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Certifique-se de que a altura seja 100vh */
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url(https://media.githubusercontent.com/media/Sabadinhos/Portfolio/refs/heads/main/Pagina1.png)
+      no-repeat top center;
+  background-size: cover; /* Ajusta para cobrir */
+  filter: blur(5px);
+  z-index: -1;
+}
+
+/* Seções gerais com largura fixa de 1697px que escalonam automaticamente */
+.section {
+  width: 100%;
+  max-width: 1697px;
+  margin: 0 auto;
+  padding: 10px 0; /* Ajustado para ter um pouco de espaço vertical */
+}
+
+/* Hero Section */
+.section.hero {
+  background-image: url(https://media.githubusercontent.com/media/Sabadinhos/Portfolio/refs/heads/main/Pagina1.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  margin: 0px auto 50px; /* Centraliza horizontalmente e adiciona 10px de margem inferior */
+}
+
+/* First additional image section (4 images grid and 1 center) */
+.image-section1 .image-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.side-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.side-image img,
+.center-image img {
+  width: 100%;
+  max-width: 543px; /* Escalando proporcionalmente para o grid */
+  height: auto;
+  object-fit: cover;
+}
+
+/* Seção de título centralizada */
+.section-title {
+  text-align: center; /* Centraliza o texto */
+  margin: 20px 0; /* Espaçamento vertical */
+}
+
+.section-title p {
+  font-size: 36px; /* Altera para o mesmo tamanho da footer */
+  color: #333; /* Aplica a mesma cor do texto da footer */
+}
+
+/* Media Grid Section (9 espaços - 3 vídeos e 6 imagens) */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  gap: 20px; /* Espaçamento entre os itens */
+}
+
+.grid-item {
+  width: 100%;
+  height: auto; /* Ajusta a altura automaticamente */
+  object-fit: cover; /* Cobre o espaço disponível */
+}
+
+/* Seção título para manter centralização e espaçamento */
+.section-title {
+  text-align: center; /* Centraliza o texto */
+  margin: 20px 0; /* Espaçamento vertical */
+}
+
+.section-title p {
+  font-size: 36px; /* Tamanho do título */
+  color: #333; /* Cor do texto do título */
+}
+
+/* Estilos dos vídeos */
+.media-grid video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Seção título e imagens horizontais */
+.image-section2 {
+  text-align: center;
+}
+
+.horizontal-images {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente as imagens */
+  gap: 20px; /* Adiciona espaço entre as imagens */
+}
+
+.horizontal-images img {
+  width: 100%;
+  max-width: 543px; /* Ajustado para se alinhar com as demais seções */
+  object-fit: cover;
+}
+
+/* Estilos da imagem animada */
+.image-container {
+  width: 100%;
+  height: 120vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  perspective: 500px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Fonte Nunito Sans */
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap");
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+/* Estilos da seção de texto centralizado */
+.footer-text {
+  text-align: center;
+  padding: 50px 0;
+  background-color: transparent; /* Remove a cor de fundo */
+  font-size: 24px;
+  color: #333; /* Mantém a cor do texto */
+}
+
+/* Seção oculta para SEO */
+.seo-section {
+  display: none;
+}
+
+.seo-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
