@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyaru Bag</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fontes: Uma de SERIFA (Glamour) + Uma SANS (Brutalismo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+ <script>
+ // Configuração customizada do Tailwind para as cores Gyaru
+tailwind.config = {
+ theme: {
+ extend: {
+colors: {
+ 'gyaru-pink': '#FF007F', // O Pink Choque
+'gyaru-gold': '#FFD700', // O Dourado
+},
+                    // [ALTERADO] Definições de fontFamily no Tailwind
+ fontFamily: {
+                        // Adicionadas aspas duplas por causa do espaço no nome
+'heading': ['"Bowlby One"', 'cursive'], 
+ 'body': ['Inter', 'sans-serif']
+ },
+ animation: {
+ 'marquee': 'marquee 20s linear infinite',
+ // Animação mais lenta para o lookbook
+ 'marquee-slow': 'marquee-slow 60s linear infinite', 
+ },
+ keyframes: {
+ 'marquee': {
+ '0%': { transform: 'translateX(0%)' },
+ '100%': { transform: 'translateX(-100%)' },
+},
+// Keyframe para o lookbook (move 50% para loops duplicados)
+'marquee-slow': {
+ '0%': { transform: 'translateX(0%)' },
+ '100%': { transform: 'translateX(-50%)' },
+}
+}
+}
+}
+ }
+ </script>
+ 
+<style>
+ /* Estilos Globais */
+        /* [ALTERADO] Fonte base do body */
+ body {
+font-family: 'Inter', sans-serif;
+ scroll-behavior: smooth;
+ }
+
+        /* [ALTERADO] Fonte base dos títulos */
+ h1, h2, h3, h4, h5, h6 {
+            /* Adicionadas aspas duplas por causa do espaço no nome */
+ font-family: '"Bowlby One"', cursive;
+ }
+
+        /* Sombra Neo-Brutalista (usada com Tailwind) */
+        .shadow-brutal-pink {
+            box-shadow: 8px 8px 0px #FF007F;
+            transition: all 0.2s ease-out;
+        }
+        .shadow-brutal-gold {
+            box-shadow: 8px 8px 0px #FFD700;
+            transition: all 0.2s ease-out;
+        }
+        .shadow-brutal-black {
+            box-shadow: 8px 8px 0px #000;
+            transition: all 0.2s ease-out;
+        }
+
+        /* Efeito de botão brutalista */
+        .btn-brutal:hover {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0px #000;
+        }
+        .btn-brutal-pink:hover {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0px #FF007F;
+        }
+        
+        /* NOVO: Estilo Parallax */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Classes para a animação de scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s ease-out, transform 0.8s ease-out;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Padrão de oncinha (Leopard) Neo-Brutalista */
+        .leopard-brutal {
+            /* Fundo Dourado removido e substituído por imagem */
+            background-image: url('http://sabadinhos.com/wp-content/uploads/2025/11/animalprint.jpeg');
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #000;
+            position: relative;
+            overflow: hidden;
+        }
+        .leopard-spot {
+            position: absolute;
+            background-color: #000;
+            border-radius: 50%;
+            /* Formas "quebradas" para o brutalismo */
+            border-bottom-right-radius: 10%;
+            border-top-left-radius: 20%;
+        
+        }
+    </style>
+</head>
+<body class="bg-black text-neutral-100 antialiased">
+
+    <!-- 1. Hero Section -->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center p-4 relative overflow-hidden">
+        
+        <!-- VÍDEO DE FUNDO DINÂMICO -->
+       <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0 opacity-30">
+            <!-- Placeholder de vídeo com glitter/luzes -->
+            <source src="http://sabadinhos.com/wp-content/uploads/2025/11/VIS-BOLSA.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+        </video>
+        
+        <div class="z-10">
+            <h1 class="text-6xl sm:text-8xl md:text-9xl font-heading text-gyaru-pink" style="text-shadow: 6px 6px 0px #000;">GYARU</h1>
+            <h2 class="text-5xl sm:text-7xl md:text-8xl font-heading text-neutral-100" style="text-shadow: 4px 4px 0px #FF007F;">REBEL</h2>
+            <h3 class="text-4xl sm:text-6xl md:text-7xl font-heading text-gyaru-gold" style="text-shadow: 4px 4px 0px #000;">BAG</h3>
+            
+            <a href="#concept" class="btn-brutal-pink inline-block bg-gyaru-pink text-black font-bold py-3 px-8 mt-10 text-xl border-2 border-black shadow-brutal-black font-body">
+                MAIS INFORMAÇÕES
+            </a>
+        </div>
+        
+        <!-- Elemento flutuante brutalista -->
+        <div class="absolute top-1/4 left-10 w-24 h-24 hidden md:block reveal">
+            <div class="w-full h-full border-4 border-black shadow-brutal-black bg-cover bg-center" 
+                 style="background-image: url('http://sabadinhos.com/wp-content/uploads/2025/11/caveirinha.png');">
+            </div>
+        </div>
+
+        <div class="absolute bottom-1/4 right-10 w-16 h-16 hidden md:block reveal">
+            <div class="w-full h-full border-4 border-black shadow-brutal-black bg-cover bg-center rotate-90" 
+                 style="background-image: url('http://sabadinhos.com/wp-content/uploads/2025/11/Estrela-animal-print.png');">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Marquee Section -->
+    <section class="bg-gyaru-gold text-black font-bold text-3xl md:text-5xl py-4 overflow-hidden whitespace-nowrap border-y-4 border-black">
+        <div class="flex animate-marquee">
+            <span class="mx-6">💎 AUTÊNTICA</span>
+            <span class="mx-6">✨ REBELDE</span>
+            <span class="mx-6">💖 TSUYOME</span>
+            <span class="mx-6">💎 GLAM</span>
+            <span class="mx-6">✨ MIX N' MATCH</span>
+            <span class="mx-6">💖 KAWAIICORE</span>
+            <!-- Repetido para loop -->
+            <span class="mx-6">💎 AUTÊNTICA </span>
+            <span class="mx-6">✨ REBELDE</span>
+            <span class="mx-6">💖 TSUYOME</span>
+            <span class="mx-6">💎 GLAM</span>
+            <span class="mx-6">✨ MIX N' MATCH</span>
+            <span class="mx-6">💖 KAWAIICORE</span>
+        </div>
+    </section>
+
+    <!-- 3. Concept Section -->
+    <section id="concept" class="container mx-auto px-6 py-20 md:py-32">
+        <h2 class="text-6xl md:text-8xl font-heading text-gyaru-pink mb-12 reveal">COMO SURGIU</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <!-- Cartão Brutalista -->
+                <div class="bg-neutral-100 text-black p-6 border-4 border-gyaru-pink shadow-brutal-pink">
+                    <h3 class="text-4xl font-heading text-gyaru-pink mb-4">MOODBOARD</h3>
+                    <p class="font-body text-lg">
+                        Uma fusão de elementos ocidentais de rock dos anos 2000 com a cultura Gyaru oriental.
+                        Peças com identidade própria, não somos a sua marca de fast-fashion ou inflada por celebridades.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="reveal">
+                <!-- Imagem Brutalista -->
+                <div class="border-4 border-gyaru-gold shadow-brutal-gold">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/Imagem-do-WhatsApp-de-2025-10-13-as-15.45.06_5410f959.jpg" alt="Moodboard Kuro Gyaru" class="w-full h-full object-cover filter contrast-125">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. NOVA SEÇÃO: O Desafio | O Projeto -->
+    <section id="challenge" class="container mx-auto px-6 py-20 md:py-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
+            <!-- O Desafio -->
+            <div class="reveal">
+                <div class="bg-neutral-100 text-black p-8 border-4 border-gyaru-pink shadow-brutal-pink h-full">
+                    <h2 class="text-5xl md:text-7xl font-heading text-gyaru-pink mb-6">O DESAFIO</h2>
+                    <p class="font-body text-lg">
+                        Como traduzir a estética extravagante de mixed match do gyaru oriental através do estilo y2k ocidental? O desafio era trabalhar com algo fora do convencional e apresentar um produto de atitude sem dificultar muito a produção. </p>
+                </div>
+            </div>
+            
+            <!-- O Projeto -->
+            <div class="reveal" style="transition-delay: 0.2s;">
+                <div class="bg-neutral-100 text-black p-8 border-4 border-gyaru-gold shadow-brutal-gold h-full">
+                    <h2 class="text-5xl md:text-7xl font-heading text-gyaru-gold mb-6">O PROJETO</h2>
+                    <p class="font-body text-lg">
+                        A resposta: Focar nos materiais e formato. Combinando a clássica animal print de onça com um tecido rosa estampado mas que não disputa tanta hierarquia visual e contrasta, se fazendo presente mas sem deixar tanta extravagância.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Leopard Brutal Section -->
+    <!-- Classe 'parallax-bg' e imagem de fundo pink adicionadas. 'relative' é necessário. 'bg-gyaru-pink' removido. -->
+    <section class="parallax-bg text-black py-20 md:py-32 px-6 border-y-4 border-black overflow-hidden relative" style="background-image: url('http://sabadinhos.com/wp-content/uploads/2025/11/fundo-caveira.png');">
+        <!-- Overlay para legibilidade -->
+        <div class="absolute inset-0 bg-gyaru-pink opacity-70 z-0"></div>
+        
+        <!-- Container agora é 'relative' e 'z-10' para ficar acima do overlay -->
+        <div class="container mx-auto text-center reveal relative z-10">
+            <h2 class="text-6xl md:text-8xl font-heading mb-4" style="text-shadow: 4px 4px 0px #FFD700;">CONCEITO</h2>
+            <h3 class="text-3xl md:text-5xl font-heading text-white" style="text-shadow: 2px 2px 0px #000;">CORES & ESTAMPAS</h3>
+        </div>
+        
+        <!-- Padrão Oncinha Brutalista (agora 'relative' e 'z-10') -->
+        <div class="leopard-brutal w-full max-w-4xl h-64 mx-auto mt-12 border-4 border-black shadow-brutal-black reveal relative z-10">
+            <!-- Spots -->
+            <div class="leopard-spot w-16 h-12" style="top: 10%; left: 15%; transform: rotate(20deg);"></div>
+            <div class="leopard-spot w-20 h-16" style="top: 30%; left: 30%; transform: rotate(-10deg);"></div>
+            <div class="leopard-spot w-12 h-10" style="top: 15%; left: 50%; transform: rotate(10deg);"></div>
+            <div class="leopard-spot w-24 h-20" style="top: 40%; left: 60%; transform: rotate(30deg);"></div>
+            <div class="leopard-spot w-16 h-14" style="top: 60%; left: 20%; transform: rotate(-15deg);"></div>
+            <div class="leopard-spot w-14 h-12" style="top: 70%; left: 80%; transform: rotate(5deg);"></div>
+            <div class="leopard-spot w-12 h-10" style="top: 5%; left: 85%; transform: rotate(-20deg);"></div>
+        </div>
+    </section>
+    
+    <!-- 6. Process / Gallery Section -->
+    <section class="container mx-auto px-6 py-20 md:py-32">
+        <h2 class="text-6xl md:text-8xl font-heading text-gyaru-gold mb-12 reveal">O PROCESSO. (◕‿◕✿) </h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <!-- Imagem 1 -->
+            <div class="reveal">
+                <div class="bg-gyaru-gold border-4 border-black shadow-brutal-black p-3">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/PROCESSOS_1.png" alt="Esboço" class="w-full h-64 object-cover">
+                </div>
+                <h4 class="text-2xl font-heading text-gyaru-gold mt-4">ESBOÇOS</h4>
+            </div>
+            
+            <!-- Imagem 2 -->
+            <div class="reveal" style="transition-delay: 0.2s;">
+                <div class="bg-gyaru-pink border-4 border-black shadow-brutal-black p-3">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/PROCESSOS_2.png" alt="Visualização de Idéias" class="w-full h-64 object-cover">
+                </div>
+                <h4 class="text-2xl font-heading text-gyaru-pink mt-4">EXPLORAÇÃO DE MODELOS</h4>
+            </div>
+            
+            <!-- Imagem 3 -->
+            <div class="reveal" style="transition-delay: 0.4s;">
+                <div class="bg-gyaru-gold border-4 border-black shadow-brutal-black p-3">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ref-costura.jpg" alt="Manufatura" class="w-full h-64 object-cover">
+                </div>
+                <h4 class="text-2xl font-heading text-gyaru-gold mt-4">MANUFATURA</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. NOVA SEÇÃO: Lookbook Carrossel Infinito -->
+    <section class="py-20 md:py-32 overflow-hidden">
+        <h2 class="text-6xl md:text-8xl font-heading text-gyaru-pink mb-12 text-center reveal">LOOKBOOK</h2>
+        
+        <div class="relative w-full overflow-hidden">
+            <!-- O 'w-max' é crucial para que o flex não quebre a linha -->
+            <div class="flex w-max animate-marquee-slow">
+                
+                <!-- Set 1 de Imagens -->
+                <div class="flex-shrink-0 w-80 sm:w-96 h-120 bg-gyaru-gold border-4 border-black shadow-brutal-black p-3 mx-4 reveal">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ChatGPT-Image-17-de-nov.-de-2025-15_08_06.png" alt="Look 1" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-shrink-0 w-80 sm:w-96 h-120 bg-gyaru-pink border-4 border-black shadow-brutal-black p-3 mx-4 reveal">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ChatGPT-Image-17-de-nov.-de-2025-16_36_47.png" alt="Look 2" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-shrink-0 w-80 sm:w-96 h-120 bg-gyaru-gold border-4 border-black shadow-brutal-black p-3 mx-4 reveal">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ChatGPT-Image-17-de-nov.-de-2025-14_27_31.png" alt="Look 3" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-shrink-0 w-80 sm:w-96 h-120 bg-gyaru-pink border-4 border-black shadow-brutal-black p-3 mx-4 reveal">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ChatGPT-Image-17-de-nov.-de-2025-14_55_45.png" alt="Look 4" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-shrink-0 w-80 sm:w-96 h-120 bg-gyaru-gold border-4 border-black shadow-brutal-black p-3 mx-4 reveal">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ChatGPT-Image-17-de-nov.-de-2025-15_42_04.png" alt="Look 5" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Set 2 de Imagens (Duplicatas para o loop) -->
+                <div class="flex-shrink-0 w-80 sm:w-96 h-120 bg-gyaru-gold border-4 border-black shadow-brutal-black p-3 mx-4 reveal">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ChatGPT-Image-17-de-nov.-de-2025-15_08_06.png" alt="Look 1" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-shrink-0 w-80 sm:w-96 h-120 bg-gyaru-pink border-4 border-black shadow-brutal-black p-3 mx-4 reveal">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ChatGPT-Image-17-de-nov.-de-2025-16_36_47.png" alt="Look 2" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-shrink-0 w-80 sm:w-96 h-120 bg-gyaru-gold border-4 border-black shadow-brutal-black p-3 mx-4 reveal">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ChatGPT-Image-17-de-nov.-de-2025-14_27_31.png" alt="Look 3" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-shrink-0 w-80 sm:w-96 h-120 bg-gyaru-pink border-4 border-black shadow-brutal-black p-3 mx-4 reveal">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ChatGPT-Image-17-de-nov.-de-2025-14_55_45.png" alt="Look 4" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-shrink-0 w-80 sm:w-96 h-120 bg-gyaru-gold border-4 border-black shadow-brutal-black p-3 mx-4 reveal">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/ChatGPT-Image-17-de-nov.-de-2025-15_42_04.png" alt="Look 5" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Final Product Section -->
+    <section class="bg-neutral-100 text-black py-20 md:py-32 px-6 border-y-4 border-black">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            <div class="reveal">
+                <div class="border-4 border-gyaru-pink shadow-brutal-pink">
+                    <img src="http://sabadinhos.com/wp-content/uploads/2025/11/Bolsa-foto.png" alt="Produto Final" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <div class="reveal">
+                <h2 class="text-6xl md:text-8xl font-heading text-gyaru-pink mb-6">A PEÇA FINAL.</h2>
+                <p class="text-lg font-body mb-8">
+                    Estruturada. Barulhenta. Pronta. A 'Gyaru Rebel' não é um acessório, é um ponto de exclamação.
+                    Repleta de animal print, detalhes em rosa e atitude de sobra.
+
+                    Materiais: Elastano, Tricoline, Detalhes em Metal
+                </p>
+                <a href="#" class="btn-brutal inline-block bg-gyaru-gold text-black font-bold py-4 px-10 text-xl border-2 border-black shadow-brutal-black font-body">
+                    CLIQUE PARA ENTRAR NA FILA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Video Section -->
+    <section id="concept" class="container mx-auto px-6 py-20 md:py-32">
+    
+    <h2 class="text-6xl md:text-8xl font-heading text-gyaru-pink mb-12 reveal text-center">VEJA COM MAIS</h2>
+    
+    <div class="reveal">
+        <div class="border-4 border-gyaru-gold shadow-brutal-gold">
+            
+            <video autoplay loop muted playsinline class="w-full h-auto z-0 opacity-100">
+                <source src="http://sabadinhos.com/wp-content/uploads/2025/11/VIS-BOLSA.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos.
+            </video>
+        </div>
+    </div>
+    
+    </section>
+    <!-- 9. Footer -->
+    <footer class="bg-gyaru-gold text-black text-center p-12 border-t-4 border-black">
+        <h4 class="text-3xl font-heading mb-2">GYARU REBEL 2025</h4>
+        <p class="font-body font-bold">FEITO COM ATITUDE. PROJETADO PARA O CAOS. Vinicius Sabados, 2025</p>
+    </footer>
+
+    
+    <!-- Script de Animação de Scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                    // Opcional: remover 'visible' quando sai da tela
+                    // else {
+                    //    entry.target.classList.remove('visible');
+                    // }
+                });
+            }, {
+                threshold: 0.1 // Ativa quando 10% do elemento está visível
+            });
+
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
